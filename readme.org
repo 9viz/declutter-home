@@ -5,8 +5,8 @@ to a bug in =ls=, it hid all the files and directories starting with a dot.
 Many people exploited this bug and it became a "feature".
 ** Side note
 As a side note, in Plan 9, dotfiles were completely removed and replaced
-by a sane lib directory in which every configuration file would be stored
-akin to =$HOME/.config=.
+by a sane alternative. Every configuration file (and other files you would hide)
+in Plan 9 would be stored in =$HOME/lib= akin to =$HOME/.config=.
 * Be happy
 Be happy that you're living in 2019 because before freedesktop came along,
 every software's configuration file would be a dotfile in the home directory.
@@ -24,9 +24,9 @@ tricks and practices.
 * Env vars
 A lot of Unix tools is notorious for creating dotfiles and cluttering your
 home directory (wget, less for example). But most of these read an env var
-that points to the path of the configuration file. Some of the most common
-tools and their env var will be listed below for your benefit. If something
-that you use isn't here, check the man page. I found almost all of these
+that points to the path of the configuration file. Some of these and their
+env var will be listed below for your benefit. If something that you use
+isn't here, check the man page. I found almost all of these
 simply by searching the man page.
 
 | Tool          | Env var                       |
@@ -56,6 +56,7 @@ To change these paths, you will need to patch the shell's source. This is a lot 
 than you might think. Usually, you can find the file in which the shellrc and profile
 location are declared with a simple =grep= command. And then change these and compile
 them.
+
 NOTE: If you're a mksh user, when you compile, you can change the MKSHRC_PATH definition
 * Workarounds
 These are merely workarounds and should be avoided whenever possible
@@ -82,6 +83,7 @@ HOME=${HOME}/some_other_dir firefox
 #+END_SRC
 Whenever you launch firefox via this wrapper, all the dotfiles will go to
 =${HOME}/some_other_dir= instead of =${HOME}=.
+
 NOTE: This is one of the simplest way to unclutter your home directory.
 * Bruteforcing
 What if the software you're using doesn't have an env var and you don't want to use
@@ -91,13 +93,17 @@ might think. Sometimes, you wouldn't even have the need to change the source cod
 some software allows the user to set the configuration path (or whatever else) to be set
 on compilation time. So instead of changing the source code, you would merely change a
 variable in the Makefile.
+
+You can find the patches that I made for various software (mksh, emacs, dosbox) to change
+the configuration (or whatever else) path here -
+https://github.com/vizs/home/tree/master/etc/prog.d/patches
 ** A rough outline on the process
 Usually, =grep= and a bit of time is all you need to change the path. Most likely, all
-you need to do is search for a particular word like =.software= in every file in the
+you need to do is search for a typical string like =.software= in every file in the
 source directory and change it (and make a patch). You can do this by simply running
 =grep -R '\.software' *= (assuming you're in the source directory). Then using your
 favorite editor, change the necessary lines.
-* Before and After
+* Before and Aftek
 * References
 [1] http://xahlee.info/UnixResource_dir/writ/unix_origin_of_dot_filename.html
 
