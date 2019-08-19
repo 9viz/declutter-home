@@ -29,17 +29,17 @@ tools and their env var will be listed below for your benefit. If something
 that you use isn't here, check the man page. I found almost all of these
 simply by searching the man page.
 
-| Tool          | Env var                   |
-|---------------+---------------------------|
-| less          | LESSHISTFILE              |
-| gnupg         | GNUPGHOME                 |
-| readline      | INPUTRC                   |
-| ksh           | ENV                       |
-| dialog        | DIALOGRC                  |
-| mail          | MAIL                      |
-| shell-history | HISTFILE                  |
-| xauth         | XAUTHORITY                |
-| python        | PYTHONPATH PYTHONUSERBASE |
+| Tool          | Env var                       |
+|---------------+-------------------------------|
+| less          | =LESSHISTFILE=                |
+| gnupg         | =GNUPGHOME=                   |
+| readline      | =INPUTRC=                     |
+| ksh           | =ENV=                         |
+| dialog        | =DIALOGRC=                    |
+| mail          | =MAIL=                        |
+| shell-history | =HISTFILE=                    |
+| xauth         | =XAUTHORITY=                  |
+| python        | =PYTHONPATH= =PYTHONUSERBASE= |
 
 You should definitely set most of the XDG env vars [3] because a surprising amount
 of software respects these. Out of all the XDG env vars, the most important
@@ -48,6 +48,15 @@ of software respects these. Out of all the XDG env vars, the most important
 There is one slight problem with this though. Setting a lot of env vars tend to
 clutter the profile file which may or may not be relevant to you.
 ** About shells
+Shellrcs are always a pain in the neck because every one of them will have to rely
+on a standard path for their config and profile. So shellrc paths cannot be changed,
+at least as far as I know, just by merely exporting an env var.
+
+To change these paths, you will need to patch the shell's source. This is a lot easier
+than you might think. Usually, you can find the file in which the shellrc and profile
+location are declared with a simple =grep= command. And then change these and compile
+them.
+NOTE: If you're a mksh user, when you compile, you can change the MKSHRC_PATH definition
 * Workarounds
 These are merely workarounds and should be avoided whenever possible
 but still these are worth it as a last ditch effort when the software
@@ -63,10 +72,10 @@ This is easier said than done though because launching the application might be 
 difficult so you might have to configure sudo (or doas) to launch a wrapper as that
 user without needing to type the password.
 ** Bright side
-On the bright side, not really every software needs this. In fact, from my experience,
-only two software needed this and those have been mentioned at the start of the previous
-section. A much simpler way to execute this would be to simply write a wrapper script like
-the following. In the example, I will be using Firefox.
+On the bright side, not really every software needs the previously mentioned workaround.
+In fact, from my experience, only two software needed this (and those have been mentioned
+at the start of the previous section). A much simpler way to execute this would be to
+simply write a wrapper script like the following. In the example, I will be using Firefox.
 #+BEGIN_SRC sh
 #!/bin/sh
 HOME=${HOME}/some_other_dir firefox
@@ -74,7 +83,24 @@ HOME=${HOME}/some_other_dir firefox
 Whenever you launch firefox via this wrapper, all the dotfiles will go to
 =${HOME}/some_other_dir= instead of =${HOME}=.
 NOTE: This is one of the simplest way to unclutter your home directory.
+* Bruteforcing
+What if the software you're using doesn't have an env var and you don't want to use
+ugly workarounds? Well, you can patch the software if the source is available. Patching
+software (especially when you're simply changing a variable) is a lot easier than you
+might think. Sometimes, you wouldn't even have the need to change the source code because
+some software allows the user to set the configuration path (or whatever else) to be set
+on compilation time. So instead of changing the source code, you would merely change a
+variable in the Makefile.
+** A rough outline on the process
+Usually, =grep= and a bit of time is all you need to change the path. Most likely, all
+you need to do is search for a particular word like =.software= in every file in the
+source directory and change it (and make a patch). You can do this by simply running
+=grep -R '\.software' *= (assuming you're in the source directory). Then using your
+favorite editor, change the necessary lines.
+* Before and After
 * References
 [1] http://xahlee.info/UnixResource_dir/writ/unix_origin_of_dot_filename.html
+
 [2] https://sourceforge.net/projects/larswm/
+
 [3] https://specifications.freedesktop.org/basedir-spec/latest/ar01s03.html
