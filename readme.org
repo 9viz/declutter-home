@@ -1,6 +1,6 @@
 * Dotfiles - Origin and History
 Believe it or not, the origin of dotfiles is due to a bug in
-=ls=[1]. Unix creators wanted =ls= to hide =.= and =..= but due
+=ls= [1]. Unix creators wanted =ls= to hide =.= and =..= but due
 to a bug in =ls=, it hid all the files and directories starting with a dot.
 Many people exploited this bug and it became a "feature".
 ** Side note
@@ -11,9 +11,45 @@ akin to =$HOME/.config=.
 * Be happy
 Be happy that you're living in 2019 because before freedesktop came along,
 every software's configuration file would be a dotfile in the home directory.
-As an example, take =larswm=[2]; it's configuration file is
+As an example, take =larswm= [2]; it's configuration file is
 =$HOME/.larswmrc= but most software, however, seemed to have a flag
 to specify a configuration file. Although this is a nice feature, it is still
 quite ugly to have these around in your scripts.
+** Or should you be?
+Now, most modern software do follow the XDG env vars but some of them will
+never do (like firefox). Funnily enough, even some of the Freedesktop's software
+(take dbus) doesn't follow XDG env vars which is quite ironic.
+
+Don't worry much though because most of these can be worked around using some
+tricks and practices.
+
+* Workarounds
+These are merely workarounds and should be avoided whenever possible
+but still these are worth it as a last ditch effort when the software
+that creates these pesky dotfiles is proprietary.
+
+This is what I do for Java and Minecraft (and for some browsers because
+it takes ages to change the directory in the source code).
+** How to do it
+As said before, this is a workaround and should be avoided as much as possible.
+To achieve this, you will be creating a user so that all the dotfiles will be
+dumped into that user's home directory so that your home directory will be uncluttered.
+This is easier said than done though because launching the application might be a bit
+difficult so you might have to configure sudo (or doas) to launch a wrapper as that
+user without needing to type the password.
+** Bright side
+On the bright side, not really every software needs this. In fact, from my experience,
+only two software needed this and those have been mentioned at the start of the previous
+section. A much simpler way to execute this would be to simply write a wrapper script like
+the following. In the example, I will be using Firefox.
+#+BEGIN_SRC sh
+#!/bin/sh
+HOME=${HOME}/some_other_dir firefox
+#+END_SRC
+Whenever you launch firefox via this wrapper, all the dotfiles will go to
+=${HOME}/some_other_dir= instead of =${HOME}=.
+NOTE: This is one of the simplest way to unclutter your home directory.
+* Env vars
 * References
 [1] http://xahlee.info/UnixResource_dir/writ/unix_origin_of_dot_filename.html
+[2] https://sourceforge.net/projects/larswm/
