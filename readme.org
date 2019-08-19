@@ -7,7 +7,6 @@ Many people exploited this bug and it became a "feature".
 As a side note, in Plan 9, dotfiles were completely removed and replaced
 by a sane lib directory in which every configuration file would be stored
 akin to =$HOME/.config=.
-
 * Be happy
 Be happy that you're living in 2019 because before freedesktop came along,
 every software's configuration file would be a dotfile in the home directory.
@@ -22,7 +21,33 @@ never do (like firefox). Funnily enough, even some of the Freedesktop's software
 
 Don't worry much though because most of these can be worked around using some
 tricks and practices.
+* Env vars
+A lot of Unix tools is notorious for creating dotfiles and cluttering your
+home directory (wget, less for example). But most of these read an env var
+that points to the path of the configuration file. Some of the most common
+tools and their env var will be listed below for your benefit. If something
+that you use isn't here, check the man page. I found almost all of these
+simply by searching the man page.
 
+| Tool          | Env var                   |
+|---------------+---------------------------|
+| less          | LESSHISTFILE              |
+| gnupg         | GNUPGHOME                 |
+| readline      | INPUTRC                   |
+| ksh           | ENV                       |
+| dialog        | DIALOGRC                  |
+| mail          | MAIL                      |
+| shell-history | HISTFILE                  |
+| xauth         | XAUTHORITY                |
+| python        | PYTHONPATH PYTHONUSERBASE |
+
+You should definitely set most of the XDG env vars [3] because a surprising amount
+of software respects these. Out of all the XDG env vars, the most important
+(from our angle) are =XDG_CONFIG_HOME=, =XDG_CACHE_HOME=, =XDG_DATA_HOME=.
+
+There is one slight problem with this though. Setting a lot of env vars tend to
+clutter the profile file which may or may not be relevant to you.
+** About shells
 * Workarounds
 These are merely workarounds and should be avoided whenever possible
 but still these are worth it as a last ditch effort when the software
@@ -49,7 +74,7 @@ HOME=${HOME}/some_other_dir firefox
 Whenever you launch firefox via this wrapper, all the dotfiles will go to
 =${HOME}/some_other_dir= instead of =${HOME}=.
 NOTE: This is one of the simplest way to unclutter your home directory.
-* Env vars
 * References
 [1] http://xahlee.info/UnixResource_dir/writ/unix_origin_of_dot_filename.html
 [2] https://sourceforge.net/projects/larswm/
+[3] https://specifications.freedesktop.org/basedir-spec/latest/ar01s03.html
