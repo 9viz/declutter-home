@@ -1,19 +1,18 @@
 * Dotfiles - Origin and History
 Believe it or not, the origin of dotfiles is due to a bug in
-src_sh{ls}[1]. Unix creators wanted src_sh{ls}
-to hide . and .. but due to a bug in src_sh{ls}, it hid all
-the files and directories starting with a dot. Many people exploited this
-bug and it became a "feature".
+=ls=[1]. Unix creators wanted =ls= to hide =.= and =..= but due
+to a bug in =ls=, it hid all the files and directories starting with a dot.
+Many people exploited this bug and it became a "feature".
 ** Side note
 As a side note, in Plan 9, dotfiles were completely removed and replaced
 by a sane lib directory in which every configuration file would be stored
-akin to src_sh{$HOME/.config}.
+akin to =$HOME/.config=.
 
 * Be happy
 Be happy that you're living in 2019 because before freedesktop came along,
 every software's configuration file would be a dotfile in the home directory.
-As an example, take larswm[2]; it's configuration file is
-src_sh{$HOME/.larswmrc} but most software, however, seemed to have a flag
+As an example, take =larswm=[2]; it's configuration file is
+=$HOME/.larswmrc= but most software, however, seemed to have a flag
 to specify a configuration file. Although this is a nice feature, it is still
 quite ugly to have these around in your scripts.
 * References
