@@ -35,6 +35,7 @@ simply by searching the man page.
 | gnupg         | =GNUPGHOME=                   |
 | readline      | =INPUTRC=                     |
 | ksh           | =ENV=                         |
+| zsh           | =ZDOTDIR=                     |
 | dialog        | =DIALOGRC=                    |
 | mail          | =MAIL=                        |
 | shell-history | =HISTFILE=                    |
@@ -57,7 +58,9 @@ than you might think. Usually, you can find the file in which the shellrc and pr
 location are declared with a simple =grep= command. And then change these and compile
 them.
 
-NOTE: If you're a mksh user, when you compile, you can change the MKSHRC_PATH definition
+NOTES:
+- If you're a mksh user, when you compile, you can change the MKSHRC_PATH definition
+- If you're a zsh user, you can set =ZDOTDIR= in =/etc/zsh/zshenv= [4]
 * Workarounds
 These are merely workarounds and should be avoided whenever possible
 but still these are worth it as a last ditch effort when the software
@@ -110,3 +113,5 @@ favorite editor, change the necessary lines.
 [2] https://sourceforge.net/projects/larswm/
 
 [3] https://specifications.freedesktop.org/basedir-spec/latest/ar01s03.html
+
+[4] https://github.com/vizs/declutter-home/issues/1
