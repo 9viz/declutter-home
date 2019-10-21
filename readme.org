@@ -58,7 +58,7 @@ than you might think. Usually, you can find the file in which the shellrc and pr
 location are declared with a simple =grep= command. And then change these and compile
 them.
 
-NOTES:
+NOTE:
 - If you're a mksh user, when you compile, you can change the MKSHRC_PATH definition
 - If you're a zsh user, you can set =ZDOTDIR= in =/etc/zsh/zshenv= [4]
 * Workarounds
