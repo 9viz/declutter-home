@@ -114,6 +114,7 @@ Your home directory will be structured like /.
 | ~/opt                 | Home for language's package manager's cache and software that you installed without using your distro's pm |
 
 Here's a =find ~ -type d -maxdepth 2= of my home directory -> http://0x0.st/zDBD.txt
+See also profile -> https://raw.githubusercontent.com/vizs/home/master/etc/profile
 * References
 [1] http://xahlee.info/UnixResource_dir/writ/unix_origin_of_dot_filename.html
 
