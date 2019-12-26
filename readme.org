@@ -115,6 +115,8 @@ Your home directory will be structured like /.
 
 Here's a =find ~ -type d -maxdepth 2= of my home directory -> http://0x0.st/zDBD.txt
 See also profile -> https://raw.githubusercontent.com/vizs/home/master/etc/profile
+
+Related read -> https://nixers.net/showthread.php?tid=1293
 * References
 [1] http://xahlee.info/UnixResource_dir/writ/unix_origin_of_dot_filename.html
 
