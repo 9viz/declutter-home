@@ -56,7 +56,7 @@ like the following should do the job.
 HOME=${HOME}/some_other_dir firefox
 #+END_SRC
 
-If you want to change the directory used Xfce apps, then launch
+If you want to change the directory Xfce apps use, then launch
 =xfconfd= with the changed =HOME= directory. This is likely located
 at =/lib/xfce4/xfconf/xfconfd=
 
