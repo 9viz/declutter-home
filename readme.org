@@ -56,6 +56,10 @@ like the following should do the job.
 HOME=${HOME}/some_other_dir firefox
 #+END_SRC
 
+If you want to change the directory used Xfce apps, then launch
+=xfconfd= with the changed =HOME= directory. This is likely located
+at =/lib/xfce4/xfconf/xfconfd=
+
 Sometimes that simple trick may not work. So you have
 to create another user and the software dumps all its file in the newly created
 user's home directory instead. This is a rare case and most software
@@ -91,7 +95,8 @@ env vars, etc.
 As an example, I will go through the thought process
 of making my home directory structure. I follow a similar
 style to @mitchweaver's home directory which he got from one
-of Russ Cox's livestream.
+of Russ Cox's livestream. A similar style is followed by
+@GaugeK.
 
 Your home directory will be structured like /.
 | Directory             | Function                                                                                                   |
