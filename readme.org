@@ -18,7 +18,7 @@ paths the software use for something.
 Make sure to set them as they tend to drastically reduce
 the clutter in your home directory.
 * More env vars
-A lot of Unix tools is notorious for creating dotfiles and cluttering your
+A lot of Unix tools are notorious for creating dotfiles and cluttering your
 home directory (wget, less for example). But most of these read an env var
 that points to the path of the configuration file or has a flag that
 changes some kind of path. Some of these and their
