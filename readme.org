@@ -41,7 +41,7 @@ in the future can benefit too!
 | wget          | -                             | =--no-hsts= =--hsts-file= |
 
 - If you're a mksh user, when you compile, you can change the =MKSHRC_PATH= definition
-- If you're a zsh user, you can set =ZDOTDIR= in =/etc/zsh/zshenv= [3]
+- If you're a zsh user, you can set =ZDOTDIR= in =/etc/zsh/zshenv=^{[3]}
 * Workarounds
 These are merely workarounds and should be avoided whenever possible
 but still these are worth it as a last ditch effort when the software
