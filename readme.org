@@ -1,5 +1,5 @@
 * Dotfiles - Origin and History
-The origin of dotfiles is due to a bug in =ls=^{[1]}. Unix creators wanted
+The origin of dotfiles is due to a bug in =ls= ^{[1]}. Unix creators wanted
 =ls= to hide =.= and =..= but due to a bug in =ls=, it hid all the files
 and directories starting with a dot.
 Many people exploited this bug and it became a "feature".
@@ -41,7 +41,7 @@ in the future can benefit too!
 | wget          | -                             | =--no-hsts= =--hsts-file= |
 
 - If you're a mksh user, when you compile, you can change the =MKSHRC_PATH= definition
-- If you're a zsh user, you can set =ZDOTDIR= in =/etc/zsh/zshenv=^{[3]}
+- If you're a zsh user, you can set =ZDOTDIR= in =/etc/zsh/zshenv= ^{[3]}
 * Workarounds
 These are merely workarounds and should be avoided whenever possible
 but still these are worth it as a last ditch effort when the software
