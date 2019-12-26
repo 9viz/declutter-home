@@ -1,66 +1,47 @@
 * Dotfiles - Origin and History
-Believe it or not, the origin of dotfiles is due to a bug in
-=ls= [1]. Unix creators wanted =ls= to hide =.= and =..= but due
-to a bug in =ls=, it hid all the files and directories starting with a dot.
+The origin of dotfiles is due to a bug in =ls=^{[1]}. Unix creators wanted
+=ls= to hide =.= and =..= but due to a bug in =ls=, it hid all the files
+and directories starting with a dot.
 Many people exploited this bug and it became a "feature".
 ** Side note
 As a side note, in Plan 9, dotfiles were completely removed and replaced
 by a sane alternative. Every configuration file (and other files you would hide)
 in Plan 9 would be stored in =$HOME/lib= akin to =$HOME/.config=.
-* Be happy
-Be happy that you're living in 2019 because before freedesktop came along,
-every software's configuration file would be a dotfile in the home directory.
-As an example, take =larswm= [2]; it's configuration file is
-=$HOME/.larswmrc= but most software, however, seemed to have a flag
-to specify a configuration file. Although this is a nice feature, it is still
-quite ugly to have these around in your scripts.
-** Or should you be?
-Now, most modern software do follow the XDG env vars but some of them will
-never do (like firefox). Funnily enough, even some of the Freedesktop's software
-(take dbus) doesn't follow XDG env vars which is quite ironic.
+* Freedesktop's XDG environment variables
+Freedesktop's XDG env vars^{[2]} like =XDG_CACHE_HOME=,
+=XDG_CONFIG_HOME= and many more is a key to keep
+your home directory tidy because nine out of ten
+software follows them. If they don't follow those
+conventions, most of them have a flag to change
+paths the software use for something.
 
-Don't worry much though because most of these can be worked around using some
-tricks and practices.
-* Env vars
+Make sure to set them as they tend to drastically reduce
+the clutter in your home directory.
+* More env vars
 A lot of Unix tools is notorious for creating dotfiles and cluttering your
 home directory (wget, less for example). But most of these read an env var
-that points to the path of the configuration file. Some of these and their
-env var will be listed below for your benefit. If something that you use
-isn't here, check the man page. I found almost all of these
-simply by searching the man page.
+that points to the path of the configuration file or has a flag that
+changes some kind of path. Some of these and their
+env var/flag will be listed below for your benefit. If something that you use
+isn't here, check the man page and make sure to make an issue so people
+in the future can benefit too!
 
-| Tool          | Env var                       |
-|---------------+-------------------------------|
-| less          | =LESSHISTFILE=                |
-| gnupg         | =GNUPGHOME=                   |
-| readline      | =INPUTRC=                     |
-| ksh           | =ENV=                         |
-| zsh           | =ZDOTDIR=                     |
-| dialog        | =DIALOGRC=                    |
-| mail          | =MAIL=                        |
-| shell-history | =HISTFILE=                    |
-| xauth         | =XAUTHORITY=                  |
-| python        | =PYTHONPATH= =PYTHONUSERBASE= |
+| Tool          | Env var                       | Flag                      |
+|---------------+-------------------------------+---------------------------|
+| less          | =LESSHISTFILE=                | -                         |
+| gnupg         | =GNUPGHOME=                   | -                         |
+| readline      | =INPUTRC=                     | -                         |
+| ksh^*         | =ENV=                         | -                         |
+| zsh^*         | =ZDOTDIR=                     | -                         |
+| dialog        | =DIALOGRC=                    | -                         |
+| mail          | =MAIL=                        | -                         |
+| shell-history | =HISTFILE=                    | -                         |
+| xauth         | =XAUTHORITY=                  | -                         |
+| python        | =PYTHONPATH= =PYTHONUSERBASE= | -                         |
+| wget          | -                             | =--no-hsts= =--hsts-file= |
 
-You should definitely set most of the XDG env vars [3] because a surprising amount
-of software respects these. Out of all the XDG env vars, the most important
-(from our angle) are =XDG_CONFIG_HOME=, =XDG_CACHE_HOME=, =XDG_DATA_HOME=.
-
-There is one slight problem with this though. Setting a lot of env vars tend to
-clutter the profile file which may or may not be relevant to you.
-** About shells
-Shellrcs are always a pain in the neck because every one of them will have to rely
-on a standard path for their config and profile. So shellrc paths cannot be changed,
-at least as far as I know, just by merely exporting an env var.
-
-To change these paths, you will need to patch the shell's source. This is a lot easier
-than you might think. Usually, you can find the file in which the shellrc and profile
-location are declared with a simple =grep= command. And then change these and compile
-them.
-
-NOTE:
 - If you're a mksh user, when you compile, you can change the MKSHRC_PATH definition
-- If you're a zsh user, you can set =ZDOTDIR= in =/etc/zsh/zshenv= [4]
+- If you're a zsh user, you can set =ZDOTDIR= in =/etc/zsh/zshenv= [3]
 * Workarounds
 These are merely workarounds and should be avoided whenever possible
 but still these are worth it as a last ditch effort when the software
@@ -110,8 +91,6 @@ favorite editor, change the necessary lines.
 * References
 [1] http://xahlee.info/UnixResource_dir/writ/unix_origin_of_dot_filename.html
 
-[2] https://sourceforge.net/projects/larswm/
+[2] https://specifications.freedesktop.org/basedir-spec/latest/ar01s03.html
 
-[3] https://specifications.freedesktop.org/basedir-spec/latest/ar01s03.html
-
-[4] https://github.com/vizs/declutter-home/issues/1
+[3] https://github.com/vizs/declutter-home/issues/1
