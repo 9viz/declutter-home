@@ -31,8 +31,8 @@ in the future can benefit too!
 | less          | =LESSHISTFILE=                | -                         |
 | gnupg         | =GNUPGHOME=                   | -                         |
 | readline      | =INPUTRC=                     | -                         |
-| ksh^*         | =ENV=                         | -                         |
-| zsh^*         | =ZDOTDIR=                     | -                         |
+| ksh^{*}       | =ENV=                         | -                         |
+| zsh^{*}       | =ZDOTDIR=                     | -                         |
 | dialog        | =DIALOGRC=                    | -                         |
 | mail          | =MAIL=                        | -                         |
 | shell-history | =HISTFILE=                    | -                         |
@@ -45,49 +45,42 @@ in the future can benefit too!
 * Workarounds
 These are merely workarounds and should be avoided whenever possible
 but still these are worth it as a last ditch effort when the software
-that creates these pesky dotfiles is proprietary.
+that creates these pesky dotfiles is proprietary or if the compilation
+time is large.
 
-This is what I do for Java and Minecraft (and for some browsers because
-it takes ages to change the directory in the source code).
-** How to do it
-As said before, this is a workaround and should be avoided as much as possible.
-To achieve this, you will be creating a user so that all the dotfiles will be
-dumped into that user's home directory so that your home directory will be uncluttered.
-This is easier said than done though because launching the application might be a bit
-difficult so you might have to configure sudo (or doas) to launch a wrapper as that
-user without needing to type the password.
-** Bright side
-On the bright side, not really every software needs the previously mentioned workaround.
-In fact, from my experience, only two software needed this (and those have been mentioned
-at the start of the previous section). A much simpler way to execute this would be to
-simply write a wrapper script like the following. In the example, I will be using Firefox.
+A simple way to shove all the dotfiles to a directory you desire would
+be to change the value of =HOME= env var at launch. A simple wrapper
+like the following should do the job.
 #+BEGIN_SRC sh
 #!/bin/sh
 HOME=${HOME}/some_other_dir firefox
 #+END_SRC
-Whenever you launch firefox via this wrapper, all the dotfiles will go to
-=${HOME}/some_other_dir= instead of =${HOME}=.
 
-NOTE: This is one of the simplest way to unclutter your home directory.
-* Bruteforcing
-What if the software you're using doesn't have an env var and you don't want to use
-ugly workarounds? Well, you can patch the software if the source is available. Patching
-software (especially when you're simply changing a variable) is a lot easier than you
-might think. Sometimes, you wouldn't even have the need to change the source code because
-some software allows the user to set the configuration path (or whatever else) to be set
-on compilation time. So instead of changing the source code, you would merely change a
+Sometimes that simple trick may not work for some things. So you have
+to create another user and so the software dumps all its file in that user's
+home directory instead. You might want to configure sudo/doas to launch
+the software as the newly created user. This is a rare case and most software
+shouldn't need this.
+* Patching
+What if the software you're using doesn't have an env var and you do not want to use
+ugly workarounds? Well, you can patch the software. Patching
+software (especially when you're simply changing a variable) is simple and easy.
+Sometimes, you might not even need to change the source code because
+some software can set the configuration path (or whatever else) at
+compile time. So instead of changing the source code, you have to change a
 variable in the Makefile.
 
 You can find the patches that I made for various software (mksh, emacs, dosbox) to change
 the configuration (or whatever else) path here -
-https://github.com/vizs/home/tree/master/etc/prog.d/patches
-** A rough outline on the process
-Usually, =grep= and a bit of time is all you need to change the path. Most likely, all
-you need to do is search for a typical string like =.software= in every file in the
-source directory and change it (and make a patch). You can do this by simply running
-=grep -R '\.software' *= (assuming you're in the source directory). Then using your
+1. https://github.com/vizs/home/tree/master/etc/prog.d/patches
+2. https://github.com/vizs/ports
+** A rough outline of the process
+=grep= and a bit of time is all you need to change the path. In most cases, all
+you need to do is search for a string like =.software= in every file in the
+source directory and change it. You can do this by simply running
+=grep -R '\.software'= (assuming you're in the source directory). Then using your
 favorite editor, change the necessary lines.
-* Before and Aftek
+* Structure
 * References
 [1] http://xahlee.info/UnixResource_dir/writ/unix_origin_of_dot_filename.html
 
