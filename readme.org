@@ -92,31 +92,6 @@ Decide which files go where and start enforcing your
 rules to the files you have by moving them, declaring
 env vars, etc.
 
-As an example, I will go through the thought process
-of making my home directory structure. I follow a similar
-style to @mitchweaver's home directory which he got from one
-of Russ Cox's livestream. A similar style is followed by
-@GaugeK.
-
-Your home directory will be structured like /.
-| Directory             | Function                                                                                                   |
-|-----------------------+------------------------------------------------------------------------------------------------------------|
-| ~/bin                 | Scripts that are independent of window manager, xorg, etc.                                                 |
-| ~/etc                 | Configuration files for software                                                                           |
-| ~/etc/xorg.d/bin      | Xorg dependent scripts that is window manager agnostic                                                     |
-| ~/etc/xorg.d/wm.d/bin | Scripts that are window manager dependent                                                                  |
-| ~/usr/doc             | Directory containing projects, books, etc.                                                                 |
-| ~/usr/share           | Directory which contains images, videos, music, etc.                                                       |
-| ~/usr/local/bin       | Compiled binaries                                                                                          |
-| ~/usr/local/share     | ~/.local like directory that also holds cache                                                              |
-| ~/usr/src/lang        | Programs written in lang                                                                                   |
-| ~/tmp                 | Temporary junk                                                                                             |
-| ~/opt                 | Home for language's package manager's cache and software that you installed without using your distro's pm |
-
-Here's a =find ~ -type d -maxdepth 2= of my home directory -> http://0x0.st/zDBD.txt
-
-See also profile -> https://raw.githubusercontent.com/vizs/home/master/etc/profile
-
 Related read -> https://nixers.net/showthread.php?tid=1293
 * References
 [1] http://xahlee.info/UnixResource_dir/writ/unix_origin_of_dot_filename.html
