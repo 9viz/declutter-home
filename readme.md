@@ -30,7 +30,7 @@ isn't here, check the man page and make sure to make an issue so people
 in the future can benefit too!
 
 | Tool                  | Env var                       | Flag                      |
-|-----------------------+-------------------------------+---------------------------|
+|-----------------------|-------------------------------|---------------------------|
 | less                  | `LESSHISTFILE`                | -                         |
 | gnupg                 | `GNUPGHOME`                   | -                         |
 | readline              | `INPUTRC`                     | -                         |
