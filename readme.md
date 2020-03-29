@@ -37,7 +37,7 @@ in the future can benefit too!
 | ksh<sup>*</sup>       | `ENV`                         | -                         |
 | zsh<sup>*</sup>       | `ZDOTDIR`                     | -                         |
 | dialog                | `DIALOGRC`                    | -                         |
-| mail                  | `MAIL`                        | -                         |
+| mail                  | `MAIL`, `MAILRC`              | -                         |
 | shell-history         | `HISTFILE`                    | -                         |
 | xauth                 | `XAUTHORITY`                  | -                         |
 | python                | `PYTHONPATH` `PYTHONUSERBASE` | -                         |
