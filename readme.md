@@ -89,17 +89,17 @@ Sometimes you can still have certain directories continue to pop up in your home
 [ "$(pgrep -x ch)" = "$$" ] || exit 1
 
 while :; do
-	set --
-	for i in "$HOME/.pki" \
-           "$HOME/.w3m" \
-					 "$HOME/.bash*" \
-           "$HOME/.config" \
-					 "$HOME/.lyrics" \
-           "$HOME/.xournalpp"; do
-		[ -e "$i" ] && set -- "$@" "$i"
-	done
-	[ "$1" ] && rm -rf -- "$@"
-	sleep 60
+  set --
+  for i in "$HOME/.pki" \
+	   "$HOME/.w3m" \
+	   "$HOME/.bash*" \
+	   "$HOME/.config" \
+	   "$HOME/.lyrics" \
+	   "$HOME/.xournalpp"; do
+    [ -e "$i" ] && set -- "$@" "$i"
+  done
+  [ "$1" ] && rm -rf -- "$@"
+  sleep 60
 done
 ```
 
