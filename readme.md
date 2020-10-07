@@ -40,11 +40,14 @@ in the future can benefit too!
 | mail                  | `MAIL`, `MAILRC`              | -                         |
 | shell-history         | `HISTFILE`                    | -                         |
 | xauth                 | `XAUTHORITY`                  | -                         |
+| xinit                 | `XINITRC`                     |                           |
 | python                | `PYTHONPATH` `PYTHONUSERBASE` | -                         |
 | pulseaudio            | `PULSE_COOKIE`                | -                         |
 | GIMP                  | `GIMP2_DIRECTORY`             | -                         |
 | pass                  | `PASSWORD_STORE_DIR`          | -                         |
-| Xorg                  | `XAUTHORITY` `XINITRC`        |                           |
+| dunst                 | -                             | `-conf`                   |
+| picom                 | -                             | `--config`                |
+| sxhkd                 | -                             | `-c`                      |
 | wget                  | -                             | `--no-hsts` `--hsts-file` |
 
 - If you're a mksh user, when you compile, you can change the `MKSHRC_PATH` definition
