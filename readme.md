@@ -45,11 +45,15 @@ in the future can benefit too!
 | GIMP                  | `GIMP2_DIRECTORY`             | -                         |
 | pass                  | `PASSWORD_STORE_DIR`          | -                         |
 | Xorg                  | `XAUTHORITY` `XINITRC`        |                           |
+| dunst                 | -                             | `-conf`                   |
+| picom                 | -                             | `--config`                |
+| sxhkd                 | -                             | `-c`                      |
 | wget                  | -                             | `--no-hsts` `--hsts-file` |
 
 - If you're a mksh user, when you compile, you can change the `MKSHRC_PATH` definition
 - If you're a zsh user, you can set `ZDOTDIR` in `/etc/zsh/zshenv`<sup>[3]</sup>
 - About .Xfiles - https://nixers.net/showthread.php?tid=2271
+- As a last resort, you *can* manually edit `/usr/bin/startx` to use an `.xinitrc` (or any other name) file of your choice to run when starting Xorg
 
 # Workarounds
 These are merely workarounds and should be avoided whenever possible
@@ -74,6 +78,32 @@ Sometimes that simple trick may not work. So you have
 to create another user and the software dumps all its file in the newly created
 user's home directory instead. This is a rare case and most software
 shouldn't need this.
+
+# `rm` Daemon
+
+Sometimes you can still have certain directories continue to pop up in your home folder, this can be taken care of quite easily using an "`rm` daemon". Here is an example of one I named `ch` that removes a few pesky folders for me:
+
+```sh
+#!/bin/sh
+
+[ "$(pgrep -x ch)" = "$$" ] || exit 1
+
+while :; do
+	set --
+	for i in "$HOME/.pki" \
+           "$HOME/.w3m" \
+					 "$HOME/.bash*" \
+           "$HOME/.config" \
+					 "$HOME/.lyrics" \
+           "$HOME/.xournalpp"; do
+		[ -e "$i" ] && set -- "$@" "$i"
+	done
+	[ "$1" ] && rm -rf -- "$@"
+	sleep 60
+done
+```
+
+You can adjust the value of the `sleep` command at the end of the script to change the rate at which it cleans your home directory. Ideally you would want to execute this in either your window managers' startup file, `xinitrc`, or the equivalent for your display protocol.
 
 # Patching
 What if the software you're using doesn't have an env var and you do not want to use
