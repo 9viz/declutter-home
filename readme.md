@@ -41,6 +41,10 @@ in the future can benefit too!
 | shell-history         | `HISTFILE`                    | -                         |
 | xauth                 | `XAUTHORITY`                  | -                         |
 | python                | `PYTHONPATH` `PYTHONUSERBASE` | -                         |
+| pulseaudio            | `PULSE_COOKIE`                | -                         |
+| GIMP                  | `GIMP2_DIRECTORY`             | -                         |
+| pass                  | `PASSWORD_STORE_DIR`          | -                         |
+| Xorg                  | `XAUTHORITY` `XINITRC`        |                           |
 | wget                  | -                             | `--no-hsts` `--hsts-file` |
 
 - If you're a mksh user, when you compile, you can change the `MKSHRC_PATH` definition
