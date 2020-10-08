@@ -40,11 +40,11 @@ in the future can benefit too!
 | mail                  | `MAIL`, `MAILRC`              | -                         |
 | shell-history         | `HISTFILE`                    | -                         |
 | xauth                 | `XAUTHORITY`                  | -                         |
+| xinit                 | `XINITRC`                     |                           |
 | python                | `PYTHONPATH` `PYTHONUSERBASE` | -                         |
 | pulseaudio            | `PULSE_COOKIE`                | -                         |
 | GIMP                  | `GIMP2_DIRECTORY`             | -                         |
 | pass                  | `PASSWORD_STORE_DIR`          | -                         |
-| Xorg                  | `XAUTHORITY` `XINITRC`        |                           |
 | dunst                 | -                             | `-conf`                   |
 | picom                 | -                             | `--config`                |
 | sxhkd                 | -                             | `-c`                      |
@@ -53,7 +53,7 @@ in the future can benefit too!
 - If you're a mksh user, when you compile, you can change the `MKSHRC_PATH` definition
 - If you're a zsh user, you can set `ZDOTDIR` in `/etc/zsh/zshenv`<sup>[3]</sup>
 - About .Xfiles - https://nixers.net/showthread.php?tid=2271
-- As a last resort, you *can* manually edit `/usr/bin/startx` to use an `.xinitrc` (or any other name) file of your choice to run when starting Xorg
+- As a last resort, you *can* manually edit `/usr/bin/startx` to use an `.xinitrc` (or any other name) file of your choice to execute when running `xinit`
 
 # Workarounds
 These are merely workarounds and should be avoided whenever possible
