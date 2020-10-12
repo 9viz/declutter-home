@@ -44,7 +44,7 @@ in the future can benefit too!
 | GIMP          | ~GIMP2_DIRECTORY~           | -                     |
 | gnupg         | ~GNUPGHOME~                 | -                     |
 | readline      | ~INPUTRC~                   | -                     |
-| ksh^*          | ~ENV~                       | -                     |
+| ksh^{*}          | ~ENV~                       | -                     |
 | less          | ~LESSHISTFILE~              | -                     |
 | mail          | ~MAIL~ ~MAILRC~               | -                     |
 | pass          | ~PASSWORD_STORE_DIR~        | -                     |
