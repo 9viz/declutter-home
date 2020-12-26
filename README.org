@@ -58,8 +58,8 @@ in the future can benefit too!
 | xinit         | ~XINITRC~                   | -                     |
 | zsh^{**}         | ~ZDOTDIR~                   | -                     |
 
-- * If you're a mksh user, when you compile, you can change the ~MKSHRC_PATH~ definition
-- ** If you're a zsh user, you can set ~ZDOTDIR~ in ~/etc/zsh/zshenv~ [3]
+- * Mksh lets you change ~MKSHRC_PATH~ during compile time
+- ** Set in ~/etc/zsh/zshenv~ [3]
 - About .Xfiles - https://nixers.net/showthread.php?tid=2271
 * Workarounds
 These are merely workarounds and should be avoided whenever possible
