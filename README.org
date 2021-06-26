@@ -117,3 +117,5 @@ Related read - https://nixers.net/showthread.php?tid=1293
 1.  http://xahlee.info/UnixResource_dir/writ/unix_origin_of_dot_filename.html
 2.  https://specifications.freedesktop.org/basedir-spec/latest/ar01s03.html
 3.  https://github.com/vizs/declutter-home/issues/1
+* See Also
+https://github.com/dylanaraps/clutter-home
