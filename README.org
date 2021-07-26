@@ -39,29 +39,31 @@ var/flag will be listed below for your benefit.  If something that you
 use isn't here, check the man page and make sure to make an issue so
 people in the future can benefit too!
 
-| Tool          | Env var                   | Flag                  |
-|---------------+---------------------------+-----------------------|
+| Tool          | Env var                     | Flag                  |
+|---------------+-----------------------------+-----------------------|
 | dialog        | ~DIALOGRC~                  | -                     |
-| dunst         | -                         | ~-conf~                 |
+| dunst         | -                           | ~-conf~               |
 | GIMP          | ~GIMP2_DIRECTORY~           | -                     |
 | gnupg         | ~GNUPGHOME~                 | -                     |
-| readline      | ~INPUTRC~                   | -                     |
-| ksh^{a}            | ~ENV~                       | -                     |
+| ksh^{a}       | ~ENV~                       | -                     |
 | less          | ~LESSHISTFILE~              | -                     |
-| mail          | ~MAIL~ ~MAILRC~               | -                     |
+| mail          | ~MAIL~ ~MAILRC~             | -                     |
+| neovim^{b}    | ~NVIM_LOG_FILE~             | -                     |
 | pass          | ~PASSWORD_STORE_DIR~        | -                     |
-| picom         | -                         | ~--config~              |
+| picom         | -                           | ~--config~            |
 | pulseaudio    | ~PULSE_COOKIE~              | -                     |
-| python        | ~PYTHONPATH~ ~PYTHONUSERBASE~ | -                     |
+| python        | ~PYTHONPATH~ ~PYTHONUSERBASE~ | -                   |
+| readline      | ~INPUTRC~                   | -                     |
 | shell-history | ~HISTFILE~                  | -                     |
-| sxhkd         | -                         | ~-c~                    |
-| wget          | -                         | ~--no-hsts~ ~--hsts-file~ |
+| sxhkd         | -                           | ~-c~                  |
+| wget          | -                           | ~--no-hsts~ ~--hsts-file~ |
 | xauth         | ~XAUTHORITY~                | -                     |
 | xinit         | ~XINITRC~                   | -                     |
-| zsh^{b}      | ~ZDOTDIR~                   | -                     |
+| zsh^{c}       | ~ZDOTDIR~                   | -                     |
 
 - a Mksh lets you change ~MKSHRC_PATH~ during compile time
-- b Set in ~/etc/zsh/zshenv~ [3]
+- b Creates .nvimlog in the current directory by default
+- c Set in ~/etc/zsh/zshenv~ [3]
 - About .Xfiles: https://nixers.net/showthread.php?tid=2271
 * Workarounds
 These are merely workarounds and should be avoided whenever possible
