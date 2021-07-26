@@ -37,7 +37,7 @@ an env var that points to the path of the configuration file or has a
 flag that changes some kind of path.  Some of these and their env
 var/flag will be listed below for your benefit.  If something that you
 use isn't here, check the man page and make sure to send an email to
-the aforementioned email so people in the future can benefit too!
+the aforementioned address so people in the future can benefit too!
 
 | Tool          | Env var                   | Flag                  |
 |---------------+---------------------------+-----------------------|
