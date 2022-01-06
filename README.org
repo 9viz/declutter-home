@@ -2,8 +2,8 @@
 Some of the information in this repository is bound to be outdated as
 time goes on (this includes the links to various websites and files
 too).  If you find that some of the information here is outdated or
-would like to add something new, please send a patch to visuwesh [at]
-tutanota [dot] com.
+would like to add something new, please send a patch to visuweshm [at]
+gmail [dot] com.
 
 I am not responsible for any breakage for your system whatsoever, you
 indulged in this madness by yourself.
