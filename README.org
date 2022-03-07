@@ -1,128 +1,140 @@
+#+TITLE: declutter-home
+#+AUTHOR: Visuwesh
+
 * Disclaimer
-Some of the information in this repository is bound to be outdated as
-time goes on (this includes the links to various websites and files
-too).  If you find that some of the information here is outdated or
-would like to add something new, please send a patch to visuweshm [at]
-gmail [dot] com.
 
-I am not responsible for any breakage for your system whatsoever, you
-indulged in this madness by yourself.
+This repository is bound to get outdated and have broken links as time
+goes on.  I no longer engage in the work that will be highlighted
+below so I do not feel any need or /responsibility/ to fix these.
+Moreover, I might not add new information to this repository but if
+you have any, or want to fix any broken links and outdated/mis-
+information, please send a patch to visuweshm [at] gmail [dot] com.
 
-P.S. This project is more or less abandoned by me as I don't feel like
-doing the things I've said anymore, so the recent information is from
-the community itself.
-* Dotfiles - Origin and History
-The origin of dotfiles is due to a bug in ~ls~ [1].  Unix creators wanted
-~ls~ to hide ~.~ and ~..~ but due to a bug in ~ls~, it hid all the files and
-directories starting with a dot.  Many people exploited this bug and
-it became a "feature".
-** Side note
-As a side note, in Plan 9, dotfiles were completely removed and
-replaced by a sane alternative.  Every configuration file (and other
-files you would hide) in Plan 9 is stored in ~$HOME/lib~ akin to
-~$HOME/.config~.
-* Freedesktop's XDG environment variables
-Freedesktop's XDG env vars [2] like ~XDG_CACHE_HOME~, ~XDG_CONFIG_HOME~
-and many more is a key to keep your home directory tidy because nine
-out of ten software follows them.  If they don't follow those
-conventions, most of them have a flag to change paths the software use
-for something.
+P.S. I am not responsible for any breakage whatsoever.  You engaged in
+this madness by yourself.
 
-Make sure to set them as they tend to drastically reduce the clutter
-in your home directory.
-* More env vars
-A lot of Unix tools are notorious for creating dotfiles and cluttering
-your home directory (wget, less for example).  But most of these read
-an env var that points to the path of the configuration file or has a
-flag that changes some kind of path.  Some of these and their env
-var/flag will be listed below for your benefit.  If something that you
-use isn't here, check the man page and make sure to send an email to
-the aforementioned address so people in the future can benefit too!
+* Dotfiles---Origin and History
 
-| Tool          | Env var                   | Flag                  |
+In an attempt to make ls not list "." and ".."  [1], a bug introduced
+the notion of hidden files (or "dotfiles") which was subsequently
+abused by people and hence became a "feature".
+
+This misfeature was completely removed in Plan 9.  Plan 9 follows a
+sane hierarchy and even has a XDG_CONFIGURATION_HOME/XDG_DATA_HOME
+like directory---~/lib.
+
+* Freedesktop's XDG Environment Variables
+
+Freedesktop defines numerous environment variables [2] that helps to
+keep the home directory organised and the data grouped in a hierarchy.
+Declaring them goes a long way in keeping the home directory tidy but
+some of the older software might/do not follow this.
+
+The basic environmental variables are listed below for your
+convenience,
+
+    1. XDG_CACHE_HOME
+    2. XDG_CONFIG_HOME
+    3. XDG_DATA_HOME
+
+Refer to [2] to learn what they mean.
+
+* Application-specific Environment Variables
+
+As hinted in the previous section, some software do not follow the XDG
+convention.  Some of these outliers have an environment variable or a
+flag that allows you to change the directory used to store the data.
+A table of known environment variable/flag is listed below.
+
+| Software      | Environmental variable(s) | Flag(s)               |
 |---------------+---------------------------+-----------------------|
-| dialog        | ~DIALOGRC~                  | -                     |
-| dunst         | -                         | ~-conf~                 |
-| GIMP          | ~GIMP2_DIRECTORY~           | -                     |
-| gnupg         | ~GNUPGHOME~                 | -                     |
-| ksh^{a}       | ~ENV~                       | -                     |
-| less          | ~LESSHISTFILE~              | -                     |
-| mail          | ~MAIL~ ~MAILRC~               | -                     |
-| neovim^{b}    | ~NVIM_LOG_FILE~             | -                     |
-| pass          | ~PASSWORD_STORE_DIR~        | -                     |
-| picom         | -                         | ~--config~              |
-| pulseaudio    | ~PULSE_COOKIE~              | -                     |
-| python        | ~PYTHONPATH~ ~PYTHONUSERBASE~ | -                     |
-| readline      | ~INPUTRC~                   | -                     |
-| shell-history | ~HISTFILE~                  | -                     |
-| sxhkd         | -                         | ~-c~                    |
-| wget          | -                         | ~--no-hsts~ ~--hsts-file~ |
-| xauth         | ~XAUTHORITY~                | -                     |
-| xinit         | ~XINITRC~                   | -                     |
-| zsh^{c}       | ~ZDOTDIR~                   | -                     |
+| dialog        | DIALOGRC                  | -                     |
+| dunst         | -                         | -conf                 |
+| GIMP          | GIMP2_DIRECTORY           | -                     |
+| gnupg         | GNUPGHOME                 | -                     |
+| ksh (a)       | ENV                       | -                     |
+| less          | LESSHISTFILE              | -                     |
+| mail          | MAIL MAILRC               | -                     |
+| neovim (b)    | NVIM_LOG_FILE             | -                     |
+| pass          | PASSWORD_STORE_DIR        | -                     |
+| picom         | -                         | --config              |
+| pulseaudio    | PULSE_COOKIE              | -                     |
+| python        | PYTHONPATH PYTHONUSERBASE | -                     |
+| readline      | INPUTRC                   | -                     |
+| shell history | HISTFILE                  | -                     |
+| sxhkd         | -                         | -c                    |
+| wget          | -                         | --no-hsts --hsts-file |
+| xauth         | XAUTHORITY                | -                     |
+| xinit         | XINITRC                   | -                     |
+| zsh (c)       | ZDOTDIR                   | -                     |
 
-- a Mksh lets you change ~MKSHRC_PATH~ during compile time
-- b Creates .nvimlog in the current directory by default
-- c Set in ~/etc/zsh/zshenv~ [3]
-- About .Xfiles: https://nixers.net/showthread.php?tid=2271
-* Workarounds
-These are merely workarounds and should be avoided whenever possible
-but still these are worth it as a last ditch effort when the software
-that creates these pesky dotfiles is proprietary or if the compilation
-time is large.
+- a :: MKSHRC_PATH can be changed during compile time to change the
+  shellrc filename if you use mksh.
+- b :: Nvim creates .nvimlog in the current directory by default.
+- c :: Set it in /etc/zsh/zshenv [3].
 
-A simple way to shove all the dotfiles to a directory you desire is to
-change the value of ~HOME~ env var at launch.  A simple wrapper like the
-following should do the job.
+If you are confused about all the files used by Xorg, consult
+https://nixers.net/showthread.php?tid=2271.
 
-#+begin_src
+* Workaround
+
+If neither of the options are available, you can either try patching
+the software or writing a wrapper script that temporarily sets the
+HOME directory for the software.  As an example, consider a script for
+Firefox,
+
+#+BEGIN_EXAMPLE
 #!/bin/sh
-HOME=${HOME}/some_other_dir firefox
-#+end_src
 
-If you want to change the directory Xfce apps use, then launch ~xfconfd~
-with the changed ~HOME~ directory.  This is likely located at
-~/lib/xfce4/xfconf/xfconfd~
+HOME=$HOME/firefox_junk firefox $@
+#+END_EXAMPLE
 
-Sometimes that simple trick may not work.  So you have to create
-another user and the software dumps all its file in the newly created
-user's home directory instead.  This is a rare case and most software
-shouldn't need this.
+Xfce apps ignores this.  You have to launch xfconfd with the modified
+HOME directory; this is likely located at /lib/xfce4/xfconf/xfconfd.
 
 See also https://wiki.zakaria.org/privsec/home.html.
-* Patching
-What if the software you're using doesn't have an env var and you do
-not want to use ugly workarounds?  Well, you can patch the software.
-Patching software (especially when you're simply changing a variable)
-is simple.  Sometimes, you might not even need to change the source
-code because some software can set the configuration path (or whatever
-else) at compile time.  So instead of changing the source code, you
-have to change a variable in the ~Makefile~.
 
-You can find the patches that I made for various software (mksh,
-emacs, dosbox) to change the configuration (or whatever else) path
-here:
+* Patches
 
-1. https://github.com/vizs/home/tree/master/etc/prog.d/patches
-2. https://github.com/vizs/ports
-** A rough outline of the process
-~grep~ and a bit of time is all you need to change the path.  In most
-cases, all you need to do is search for a string like ~.software~ in
-every file in the source directory and change it.  You can do this by
-simply running ~grep -R '\.software'~ (assuming you're in the source
-directory).  Then using your preferred editor, change the necessary
-lines.
+If you find the workaround ugly, or if the software is resilient, you
+can try patching it.  Patching usually requires a minimal working
+knowledge of the language used but for our purposes, familiarity with
+the shell should be enough.
+
+An oversimplified outline of the process looks like,
+
+#+BEGIN_EXAMPLE
+% grep -R '\.software'
+[output]
+% sed 's|\.software|<your-desired-directory>|g' files
+#+END_EXAMPLE
+
+You might find some of my patches in https://github.com/vizs/ports
+useful.
+
 * Structure
-Reducing the number of dotfiles is not the only thing that matters to
-have an organised home directory.  A proper structure is the key to
-organisation.
 
-Decide which files go where and start enforcing your rules to the
-files you have by moving them, declaring env vars, etc.
+To reduce chaos, you need structure but too rigid of a structure
+becomes a chore an annoyance [*] so some chaos is desirable.  A
+vaguely organised home directory also helps you in writing scaleable
+scripts that analyse the directory structure to work.  Pick something
+that works for you.  No example will be provided since this is
+something that YOU have to decide for yourself.
+
+    [*] This is part of the reason why I do not follow the practises
+        listed in the repository.  At some point, it became a chore
+        and I lost interest in maintaining a pristine home directory
+        for the sake of internet points.
+
 * References
+
 1. http://xahlee.info/UnixResource_dir/writ/unix_origin_of_dot_filename.html
 2. https://specifications.freedesktop.org/basedir-spec/latest/ar01s03.html
 3. https://github.com/vizs/declutter-home/issues/1
+
 * See Also
+
 1. https://github.com/dylanaraps/clutter-home
 2. https://nixers.net/showthread.php?tid=1293
+3. https://nixers.net/showthread.php?tid=2271
+4. https://wiki.zakaria.org/privsec/home.html
