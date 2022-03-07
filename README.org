@@ -88,6 +88,8 @@ Sometimes that simple trick may not work.  So you have to create
 another user and the software dumps all its file in the newly created
 user's home directory instead.  This is a rare case and most software
 shouldn't need this.
+
+See also https://wiki.zakaria.org/privsec/home.html.
 * Patching
 What if the software you're using doesn't have an env var and you do
 not want to use ugly workarounds?  Well, you can patch the software.
